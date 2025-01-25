@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.excellentapp.brewery.archetypes</groupId>
+    <artifactId>brewery-archetype</artifactId>
+    <version>1.0</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>brewery-archetype</name>
+    <description>Archetype used to generate application based on brewery service</description>
+
+    <properties>
+        <archetype-packaging.version>3.3.1</archetype-packaging.version>
+    </properties>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>${archetype-packaging.version}</version>
+            </extension>
+        </extensions>
+    </build>
+</project>
