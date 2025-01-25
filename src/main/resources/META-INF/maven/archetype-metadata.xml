@@ -18,14 +18,29 @@
         <requiredProperty key="version">
             <defaultValue>1.0</defaultValue>
         </requiredProperty>
+        <requiredProperty key="gitignore">
+            <defaultValue>.gitignore</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
         <fileSet filtered="true" packaged="true">
             <directory>src/main/java</directory>
         </fileSet>
+        <fileSet filtered="true" packaged="false">
+            <directory>src/main/resources</directory>
+        </fileSet>
         <fileSet filtered="true" packaged="true">
             <directory>src/test/java</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="false">
+            <directory>src/test/resources</directory>
+        </fileSet>
+        <fileSet>
+            <directory/>
+            <includes>
+                <include>__gitignore__</include>
+            </includes>
         </fileSet>
     </fileSets>
 </archetype-descriptor>
