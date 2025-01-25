@@ -150,7 +150,8 @@ class ${nameUppercase}ServiceTest {
 
     private ${nameUppercase} getUpdateRequest(${nameUppercase} original${nameUppercase}) {
         return create${nameUppercase}(
-                original${nameUppercase}.getId()
+                original${nameUppercase}.getId(),
+                OFFSET_DATE_TIME
         );
     }
 
