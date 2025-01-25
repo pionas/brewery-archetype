@@ -86,7 +86,7 @@
                         <format>HTML</format>
                     </outputFormats>
                     <excludedClasses>
-                        <param>${package}.${name}.**.*Mapper*</param>
+                        <param>${package}.**.*Mapper*</param>
                     </excludedClasses>
                 </configuration>
             </plugin>
