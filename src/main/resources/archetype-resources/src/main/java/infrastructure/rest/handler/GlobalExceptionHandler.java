@@ -1,14 +1,16 @@
 package ${package}.infrastructure.rest.handler;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import ${package}.utils.DateTimeProvider;
 
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +18,11 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 @Slf4j
+@Component
+@AllArgsConstructor
 public class GlobalExceptionHandler {
+
+    private DateTimeProvider dateTimeProvider;
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handle(Exception ex) {
@@ -40,7 +46,7 @@ public class GlobalExceptionHandler {
 
     private ResponseEntity<Object> handleError(HttpStatus status, Object errors) {
         final var body = new LinkedHashMap<String, Object>();
-        body.put("timestamp", new Date());
+        body.put("timestamp", dateTimeProvider.now());
         body.put("status", status.value());
         body.put("errors", errors);
         return new ResponseEntity<>(body, status);
