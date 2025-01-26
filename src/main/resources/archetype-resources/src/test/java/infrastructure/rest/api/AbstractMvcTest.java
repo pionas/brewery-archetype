@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 
 @ExtendWith(MockitoExtension.class)
-class AbstractMvcTest {
+abstract class AbstractMvcTest {
 
     protected String mapToJson(Object object) throws JsonProcessingException {
         return getObjectMapper().writeValueAsString(object);
@@ -19,7 +19,7 @@ class AbstractMvcTest {
         return getObjectMapper().readValue(json, clazz);
     }
 
-    private ObjectMapper getObjectMapper() {
+    protected ObjectMapper getObjectMapper() {
         final var objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         return objectMapper;
