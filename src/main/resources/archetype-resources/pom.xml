@@ -7,7 +7,7 @@
     <parent>
         <groupId>pl.excellentapp.brewery.boot</groupId>
         <artifactId>brewery-parent</artifactId>
-        <version>1.0</version>
+        <version>1.0.5</version>
     </parent>
 
     <groupId>${groupId}</groupId>
@@ -16,6 +16,7 @@
 
     <properties>
         <jackson-datatype-jsr310.version>2.18.2</jackson-datatype-jsr310.version>
+        <spring-cloud-starter-netflix-eureka-client.version>4.2.0</spring-cloud-starter-netflix-eureka-client.version>
     </properties>
 
     <repositories>
@@ -51,11 +52,6 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson-datatype-jsr310.version}</version>
         </dependency>
-        <!-- external test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -63,30 +59,16 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.17.4</version>
-                <executions>
-                    <execution>
-                        <id>pitest-mutation-coverage</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>scmMutationCoverage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.pitest</groupId>
-                        <artifactId>pitest-junit5-plugin</artifactId>
-                        <version>1.2.1</version>
-                    </dependency>
-                </dependencies>
                 <configuration>
-                    <outputFormats>
-                        <format>XML</format>
-                        <format>HTML</format>
-                    </outputFormats>
+                    <targetClasses>
+                        <param>${package}.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>${package}.*</param>
+                    </targetTests>
                     <excludedClasses>
                         <param>${package}.**.*Mapper*</param>
+                        <param>${package}.**.*Configuration*</param>
                     </excludedClasses>
                 </configuration>
             </plugin>
